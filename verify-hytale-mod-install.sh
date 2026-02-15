@@ -47,7 +47,10 @@ verify_module() {
 
 [[ -d "$MODS_DIR" ]] || fail "Hytale Mods directory not found: $MODS_DIR"
 
-verify_module "$WORKSPACE_ROOT/fight-caves" "fight-caves" "com.shieldudaram.fightcaves.plugin.FightCavesPlugin"
+if [[ -x "$WORKSPACE_ROOT/scripts/verify-module-boundaries.sh" ]]; then
+  "$WORKSPACE_ROOT/scripts/verify-module-boundaries.sh"
+fi
+
 verify_module "$WORKSPACE_ROOT/Colonists" "colonists" "com.shieldudaram.colonists.plugin.ColonistsPlugin"
 
 echo "[verify-hytale-mod-install] All checks passed."
